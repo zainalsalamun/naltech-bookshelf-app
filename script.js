@@ -83,12 +83,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addBookToDOM(book) {
         const listItem = document.createElement("li");
+        listItem.setAttribute('data-testid', 'bookItem');
+        
         listItem.innerHTML = `
-            <span>${book.title} oleh ${book.author} (${book.year})</span>
             <div>
-                <button class="toggle-btn">${book.isRead ? "Pindah ke Belum Selesai" : "Pindah ke Selesai"}</button>
+                <h3 data-testid="bookItemTitle">${book.title}</h3>
+                <p data-testid="bookItemAuthor">Penulis: ${book.author}</p>
+                <p data-testid="bookItemYear">Tahun: ${book.year}</p>
+            </div>
+            <div>
+                <button class="toggle-btn" data-testid="bookItemIsCompleteButton">
+                    ${book.isRead ? "Pindah ke Belum Selesai" : "Pindah ke Selesai"}
+                </button>
                 <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Hapus</button>
+                <button class="delete-btn" data-testid="bookItemDeleteButton">Hapus</button>
             </div>
         `;
 
