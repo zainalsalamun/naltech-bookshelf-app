@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addBookToDOM(book) {
         const listItem = document.createElement("li");
         listItem.setAttribute('data-testid', 'bookItem');
+        listItem.setAttribute('data-bookid', book.id); // Added data-bookid attribute
         
         listItem.innerHTML = `
             <div>
