@@ -7,23 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
         <h1>Bookshelf App</h1>
 
         <div class="add-book">
-            <input type="text" id="bookTitle" placeholder="Book Title">
-            <input type="text" id="bookAuthor" placeholder="Book Author">
-            <input type="number" id="bookYear" placeholder="Publication Year">
+            <h2>Tambah Buku</h2>
+            <input type="text" id="bookTitle" placeholder="Judul Buku" required>
+            <input type="text" id="bookAuthor" placeholder="Penulis Buku" required>
+            <input type="number" id="bookYear" placeholder="Tahun Terbit" required>
             <label>
-                <input type="checkbox" id="bookIsRead"> Already Read
+                <input type="checkbox" id="bookIsRead"> Selesai Dibaca
             </label>
-            <button id="addBookBtn">Add Book</button>
+            <button id="addBookBtn">Tambah Buku</button>
         </div>
 
-        <div class="bookshelf">
-            <h2>Reading List</h2>
-            <ul id="bookList"></ul>
+        <div class="bookshelves">
+            <div class="bookshelf">
+                <h2>Belum Selesai Dibaca</h2>
+                <ul id="unreadList">
+                    <!-- Buku yang belum selesai dibaca akan ditampilkan di sini -->
+                </ul>
+            </div>
+
+            <div class="bookshelf">
+                <h2>Selesai Dibaca</h2>
+                <ul id="readList">
+                    <!-- Buku yang sudah selesai dibaca akan ditampilkan di sini -->
+                </ul>
+            </div>
         </div>
     </div>
 
