@@ -27,7 +27,7 @@ bookshelf-app/
 
 Download atau clone repository ini
 
-git clone https://github.com/username/bookshelf-app.git
+git clone https://github.com/zainalsalamun/naltech-bookshelf-app
 cd bookshelf-app
 
 Buka file index.html di browser
@@ -43,7 +43,7 @@ Inisialisasi Git dan push ke GitHub
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/username/bookshelf-app.git
+git remote add origin https://github.com/zainalsalamun/naltech-bookshelf-app
 git push -u origin master
 
 Aktifkan GitHub Pages
@@ -52,7 +52,7 @@ Buka Settings → Pages di repository GitHub Anda.
 
 Pilih Branch: master/main → Save.
 
-Aplikasi akan tersedia di https://username.github.io/bookshelf-app/.
+Aplikasi akan tersedia di https://github.com/zainalsalamun/naltech-bookshelf-app
 
 🛠 Teknologi yang Digunakan
 
