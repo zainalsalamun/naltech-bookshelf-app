@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const bookForm = document.querySelector("[data-testid='bookForm']");
     const bookTitleInput = document.getElementById("bookTitle");
     const bookAuthorInput = document.getElementById("bookAuthor");
     const bookYearInput = document.getElementById("bookYear");
     const bookIsReadInput = document.getElementById("bookIsRead");
-    const addBookBtn = document.getElementById("addBookBtn");
+    const searchForm = document.querySelector("[data-testid='searchBookForm']");
     const searchBookTitleInput = document.getElementById("searchBookTitle");
-    const searchBookBtn = document.getElementById("searchBookBtn");
     const unreadList = document.getElementById("unreadList");
     const readList = document.getElementById("readList");
 
@@ -17,11 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveEditBtn = document.getElementById("saveEditBtn");
     const closeModal = document.querySelector(".close");
 
-    let currentBookId = null; 
+    let currentBookId = null;
 
     loadBooks();
 
-    addBookBtn.addEventListener("click", function () {
+    bookForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        
         const title = bookTitleInput.value.trim();
         const author = bookAuthorInput.value.trim();
         const year = bookYearInput.value.trim();
@@ -32,16 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
             saveBookToStorage(book);
             refreshDOM();
 
-            bookTitleInput.value = "";
-            bookAuthorInput.value = "";
-            bookYearInput.value = "";
-            bookIsReadInput.checked = false;
+            bookForm.reset();
         } else {
             alert("Silakan isi semua data buku.");
         }
     });
 
-    searchBookBtn.addEventListener("click", function () {
+    searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        
         const searchTerm = searchBookTitleInput.value.trim().toLowerCase();
         const books = JSON.parse(localStorage.getItem("books")) || [];
         const filteredBooks = books.filter(book => book.title.toLowerCase().includes(searchTerm));
@@ -125,19 +126,16 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("books", JSON.stringify(books));
     }
 
-
     function updateBookStorage(updatedBook) {
         let books = JSON.parse(localStorage.getItem("books")) || [];
         books = books.map(b => (b.id === updatedBook.id ? updatedBook : b));
         localStorage.setItem("books", JSON.stringify(books));
     }
 
-
     function loadBooks() {
         let books = JSON.parse(localStorage.getItem("books")) || [];
         books.forEach(book => addBookToDOM(book));
     }
-
 
     function refreshDOM(filteredBooks = null) {
         unreadList.innerHTML = "";

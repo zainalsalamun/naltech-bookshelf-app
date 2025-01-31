@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Bookshelf App</h1>
 
-        <div class="add-book" data-testid="bookForm">
+        <form class="add-book" data-testid="bookForm">
             <h2>Tambah Buku</h2>
             <input type="text" id="bookTitle" placeholder="Judul Buku" required data-testid="bookFormTitleInput">
             <input type="text" id="bookAuthor" placeholder="Penulis Buku" required data-testid="bookFormAuthorInput">
@@ -18,20 +18,19 @@
             <label>
                 <input type="checkbox" id="bookIsRead" data-testid="bookFormIsCompleteCheckbox"> Selesai Dibaca
             </label>
-            <button id="addBookBtn" data-testid="bookFormSubmitButton">Tambah Buku</button>
-        </div>
+            <button type="submit" id="addBookBtn" data-testid="bookFormSubmitButton">Tambah Buku</button>
+        </form>
 
-        <div class="search-book" data-testid="searchBookForm">
+        <form class="search-book" data-testid="searchBookForm">
             <h2>Cari Buku</h2>
             <input type="text" id="searchBookTitle" placeholder="Cari berdasarkan judul" data-testid="searchBookFormTitleInput">
-            <button id="searchBookBtn" data-testid="searchBookFormSubmitButton">Cari</button>
-        </div>
+            <button type="submit" id="searchBookBtn" data-testid="searchBookFormSubmitButton">Cari</button>
+        </form>
 
         <div class="bookshelves">
             <div class="bookshelf">
                 <h2>Belum Selesai Dibaca</h2>
                 <ul id="unreadList" data-testid="incompleteBookList">
-                   
                 </ul>
             </div>
 
