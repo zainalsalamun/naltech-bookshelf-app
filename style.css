@@ -18,7 +18,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 400px;
 }
 
 h1 {
@@ -37,6 +37,13 @@ h1 {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.add-book label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
 }
 
 .add-book button {
@@ -82,4 +89,8 @@ h1 {
 
 .bookshelf button:hover {
     background-color: #c0392b;
+}
+
+.read {
+    background-color: #dff0d8;
 }
