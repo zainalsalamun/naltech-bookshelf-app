@@ -10,31 +10,50 @@
     <div class="container">
         <h1>Bookshelf App</h1>
 
-        <div class="add-book">
+        <div class="add-book" data-testid="bookForm">
             <h2>Tambah Buku</h2>
-            <input type="text" id="bookTitle" placeholder="Judul Buku" required>
-            <input type="text" id="bookAuthor" placeholder="Penulis Buku" required>
-            <input type="number" id="bookYear" placeholder="Tahun Terbit" required>
+            <input type="text" id="bookTitle" placeholder="Judul Buku" required data-testid="bookFormTitleInput">
+            <input type="text" id="bookAuthor" placeholder="Penulis Buku" required data-testid="bookFormAuthorInput">
+            <input type="number" id="bookYear" placeholder="Tahun Terbit" required data-testid="bookFormYearInput">
             <label>
-                <input type="checkbox" id="bookIsRead"> Selesai Dibaca
+                <input type="checkbox" id="bookIsRead" data-testid="bookFormIsCompleteCheckbox"> Selesai Dibaca
             </label>
-            <button id="addBookBtn">Tambah Buku</button>
+            <button id="addBookBtn" data-testid="bookFormSubmitButton">Tambah Buku</button>
+        </div>
+
+        <div class="search-book" data-testid="searchBookForm">
+            <h2>Cari Buku</h2>
+            <input type="text" id="searchBookTitle" placeholder="Cari berdasarkan judul" data-testid="searchBookFormTitleInput">
+            <button id="searchBookBtn" data-testid="searchBookFormSubmitButton">Cari</button>
         </div>
 
         <div class="bookshelves">
             <div class="bookshelf">
                 <h2>Belum Selesai Dibaca</h2>
-                <ul id="unreadList">
-                    <!-- Buku yang belum selesai dibaca akan ditampilkan di sini -->
+                <ul id="unreadList" data-testid="incompleteBookList">
+                   
                 </ul>
             </div>
 
             <div class="bookshelf">
                 <h2>Selesai Dibaca</h2>
-                <ul id="readList">
-                    <!-- Buku yang sudah selesai dibaca akan ditampilkan di sini -->
+                <ul id="readList" data-testid="completeBookList">
                 </ul>
             </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Buku</h2>
+            <input type="text" id="editBookTitle" placeholder="Judul Buku" required>
+            <input type="text" id="editBookAuthor" placeholder="Penulis Buku" required>
+            <input type="number" id="editBookYear" placeholder="Tahun Terbit" required>
+            <label>
+                <input type="checkbox" id="editBookIsRead"> Selesai Dibaca
+            </label>
+            <button id="saveEditBtn">Simpan Perubahan</button>
         </div>
     </div>
 
