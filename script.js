@@ -26,11 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const title = bookTitleInput.value.trim();
         const author = bookAuthorInput.value.trim();
-        const year = bookYearInput.value.trim();
-        const isRead = bookIsReadInput.checked;
+        const year = parseInt(bookYearInput.value.trim());  
+        const isComplete = bookIsReadInput.checked;       
 
         if (title && author && year) {
-            const book = { id: Date.now(), title, author, year, isRead };
+            const book = { 
+                id: Date.now(), 
+                title, 
+                author, 
+                year,        
+                isComplete   
+            };
             saveBookToStorage(book);
             refreshDOM();
 
@@ -55,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         editBookTitle.value = book.title;
         editBookAuthor.value = book.author;
         editBookYear.value = book.year;
-        editBookIsRead.checked = book.isRead;
+        editBookIsRead.checked = book.isComplete;  
         editModal.style.display = "block";
     }
 
@@ -68,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
             id: currentBookId,
             title: editBookTitle.value.trim(),
             author: editBookAuthor.value.trim(),
-            year: editBookYear.value.trim(),
-            isRead: editBookIsRead.checked,
+            year: parseInt(editBookYear.value.trim()),  
+            isComplete: editBookIsRead.checked        
         };
 
         if (updatedBook.title && updatedBook.author && updatedBook.year) {
@@ -84,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addBookToDOM(book) {
         const listItem = document.createElement("li");
         listItem.setAttribute('data-testid', 'bookItem');
-        listItem.setAttribute('data-bookid', book.id); // Added data-bookid attribute
+        listItem.setAttribute('data-bookid', book.id);
         
         listItem.innerHTML = `
             <div>
@@ -94,21 +100,21 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div>
                 <button class="toggle-btn" data-testid="bookItemIsCompleteButton">
-                    ${book.isRead ? "Pindah ke Belum Selesai" : "Pindah ke Selesai"}
+                    ${book.isComplete ? "Pindah ke Belum Selesai" : "Pindah ke Selesai"}
                 </button>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn" data-testid="bookItemDeleteButton">Hapus</button>
             </div>
         `;
 
-        if (book.isRead) {
+        if (book.isComplete) { 
             readList.appendChild(listItem);
         } else {
             unreadList.appendChild(listItem);
         }
 
         listItem.querySelector(".toggle-btn").addEventListener("click", function () {
-            book.isRead = !book.isRead;
+            book.isComplete = !book.isComplete;  
             updateBookStorage(book);
             refreshDOM();
         });
